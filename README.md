@@ -23,12 +23,12 @@ Required:
 - ```--lon_start <float>``` top left longitude of selected area,
 - ```--lat_end <float>``` bottom right latitude of selected area,
 - ```--lon_end <float>``` bottom right longitude of selected area,
-- ```--zoom_min``` minimal zoom level (included),
-- ```--zoom_max``` maximal zoom level (included) (may equal to ```--zoom_min```),
-- ```--url``` static part of URL of the server (```http://127.0.0.1:8080/tile``` for the above example notation).
+- ```--zoom_min <integer>``` minimal zoom level (included),
+- ```--zoom_max <integer>``` maximal zoom level (included) (may equal to ```--zoom_min```),
+- ```--url <string>``` static part of URL of the server (```http://127.0.0.1:8080/tile``` for the above example notation).
 
 Optional:
-- ```--output_dir``` output directory name (relative to working directory) (default is ```tiles/```).
+- ```--output_dir <string>``` output directory name (relative to working directory) (default is ```tiles/```).
 
 
 ## When and when not to use this
