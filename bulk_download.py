@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import sys
 import os
 import math
 import urllib.request
@@ -36,14 +37,18 @@ def download(zoom, xtile, ytile, provided_url, output_dir):
         os.makedirs(dir_path)
     
     if not os.path.isfile(download_path):
-        print("downloading tile {}".format(url))
         try:
+            print("downloading tile {}...".format(url), end="")
             source = urllib.request.urlopen(url)
             content = source.read()
             source.close()
+            print(" done".format(url), end="")
         except urllib.error.HTTPError as e:
             print("Error when downloading tile {}, this tile was skipped ({})"
-                  .format(url, str(e)))
+                  .format(url, str(e)), file=sys.stderr)
+        except urllib.error.URLError as e:
+            print("Error when trying to open {}, is the server even running? ({})"
+                  .format(url, str(e)), file=sys.stderr)
         else:
             with open(download_path, 'wb') as destination:
                 destination.write(content)
